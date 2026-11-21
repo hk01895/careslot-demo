@@ -13,6 +13,7 @@ This is the spec agreed with the clinic (Riverside Family Practice).
 5. Patients get an SMS reminder 24 hours before their appointment.
 6. Doctors can view their schedule for any day.
 7. Every booking or cancellation is written to an audit log with who did it and when.
+8. Patients can reschedule an appointment to a different open slot.
 
 ## Run the tests
 
