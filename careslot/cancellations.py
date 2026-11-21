@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 from .models import Appointment
+from .sms import send_sms
 
 CANCEL_WINDOW = timedelta(hours=24)
 
@@ -17,5 +18,6 @@ def cancel(appt: Appointment, now: datetime) -> Appointment:
         raise TooLateToCancel("Appointments can only be cancelled up to 24 hours before they start")
     appt.status = "cancelled"
     appt.cancelled_at = now
-    # TODO: text the patient a cancellation confirmation
+    # SMS confirmation to the patient when they cancel
+    send_sms(appt.patient_phone, f"Your appointment on {appt.slot.starts_at:%b %d at %H:%M} is cancelled.")
     return appt
